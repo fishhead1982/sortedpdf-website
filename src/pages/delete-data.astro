@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Delete Your Data — SortedPDF"
+  description="How to delete your data from SortedPDF. All data is stored locally on your device."
+>
+  <Header />
+
+  <main id="main" class="bg-white dark:bg-gray-950">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <article class="prose prose-gray dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-a:text-indigo-600 dark:prose-a:text-indigo-400 max-w-none">
+
+        <h1>Delete Your Data</h1>
+
+        <p class="text-lg">
+          SortedPDF is designed with your privacy in mind. <strong>We do not store your personal data on our servers.</strong> All profile information, saved documents, and receipt data are stored exclusively on your device using AES-256 encryption.
+        </p>
+
+        <hr />
+
+        <h2>What data does SortedPDF store?</h2>
+
+        <p>All of the following is stored <strong>locally on your device only</strong>:</p>
+
+        <ul>
+          <li><strong>Profile data</strong> — your personal details used for form filling (name, address, contact info, etc.)</li>
+          <li><strong>PDF documents</strong> — forms you have imported and filled</li>
+          <li><strong>Receipt data</strong> — scanned receipts and extracted expense information</li>
+          <li><strong>App preferences</strong> — theme, onboarding status, and subscription tier</li>
+        </ul>
+
+        <p>
+          Because this data lives on your device and not on our servers, <strong>you have full control over it at all times</strong>.
+        </p>
+
+        <h2>How to delete your data</h2>
+
+        <h3>Option 1: Clear all data from within the app</h3>
+        <ol>
+          <li>Open SortedPDF</li>
+          <li>Go to <strong>Settings</strong></li>
+          <li>Tap <strong>Clear Data</strong></li>
+          <li>Confirm the deletion</li>
+        </ol>
+        <p>This permanently deletes all profile data, saved PDFs, and receipt data from your device. This action cannot be undone.</p>
+
+        <h3>Option 2: Uninstall the app</h3>
+        <p>
+          Uninstalling SortedPDF from your device will remove the app and all associated data. No data remains on our servers because none was ever sent there.
+        </p>
+
+        <h2>What about data sent for AI processing?</h2>
+
+        <p>
+          When you use AI field detection or receipt scanning, a rendered image of your document page is sent to our backend for processing via the Google Gemini API. This data is:
+        </p>
+
+        <ul>
+          <li><strong>Not stored</strong> on our servers beyond the duration of the API request</li>
+          <li><strong>Not used</strong> to train AI models</li>
+          <li><strong>Not linked</strong> to any account or personal identifier (SortedPDF has no user accounts)</li>
+        </ul>
+
+        <h2>Do I need to request data deletion?</h2>
+
+        <p>
+          <strong>No.</strong> Because we do not hold any personal data on our servers, there is no server-side data to delete. You can delete everything directly from your device using the steps above.
+        </p>
+
+        <p>
+          If you have any concerns or questions about your data, please contact us at <a href="mailto:privacy@sortedpdf.com">privacy@sortedpdf.com</a>.
+        </p>
+
+        <h2>Cancel your subscription</h2>
+
+        <p>
+          Subscriptions are managed through the Apple App Store or Google Play Store. To cancel:
+        </p>
+
+        <ul>
+          <li><strong>iOS:</strong> Settings &gt; Apple ID &gt; Subscriptions &gt; SortedPDF &gt; Cancel</li>
+          <li><strong>Android:</strong> Google Play &gt; Payments &amp; subscriptions &gt; Subscriptions &gt; SortedPDF &gt; Cancel</li>
+        </ul>
+
+        <p>
+          Cancelling your subscription does not delete your data. To remove your data, follow the deletion steps above.
+        </p>
+
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
