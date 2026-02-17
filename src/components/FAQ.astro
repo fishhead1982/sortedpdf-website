@@ -31,6 +31,11 @@ const faqs = [
       'Yes, you can cancel anytime through your App Store or Google Play subscription settings. You\'ll continue to have access until the end of your current billing period.',
   },
   {
+    question: 'How do I delete my data?',
+    answer:
+      'All your data is stored on your device only — we don\'t hold any personal data on our servers. To delete everything, go to <strong>Settings &gt; Clear Data</strong> in the app. Alternatively, uninstalling the app removes all data. No deletion request is needed. See our <a href="/delete-data" class="text-brand-600 dark:text-brand-400 hover:underline">data deletion page</a> for full details.',
+  },
+  {
     question: 'Which countries is SortedPDF available in?',
     answer:
       'SortedPDF is available worldwide, with specific form recognition optimised for Australia, the United States, the United Kingdom, Canada, New Zealand, and Ireland.',
@@ -96,8 +101,7 @@ const faqs = [
 
           <!-- Answer — animated with CSS max-height trick -->
           <div class="faq-body px-6 pb-5">
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-surface-700 pt-4">
-              {faq.answer}
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-surface-700 pt-4" set:html={faq.answer}>
             </p>
           </div>
         </details>
