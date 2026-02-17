@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
   title: string;
   description?: string;
@@ -63,9 +65,6 @@ const fullTitle = title.includes('SortedPDF') ? title : `${title} | SortedPDF`;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap"
     />
-
-    <!-- Global styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
 
     <!-- JSON-LD Structured Data slot -->
     <slot name="structured-data" />
