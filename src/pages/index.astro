@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="SortedPDF — AI-Powered PDF Form Filling & Receipt Scanning"
+  description="Auto-fill PDF forms and scan receipts with AI. Set up your profile once, fill every form in seconds. Free to start. Available on iOS and Android."
+>
+  <Header />
+
+  <main id="main">
+    <Hero />
+
+    <div class="reveal">
+      <Features id="features" />
+    </div>
+
+    <div class="reveal">
+      <HowItWorks />
+    </div>
+
+    <div class="reveal">
+      <Pricing showToggle={true} />
+      <div class="text-center py-4">
+        <a
+          href="/pricing"
+          class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200 underline underline-offset-2 transition-colors duration-200"
+        >
+          View full pricing details
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <Testimonials />
+    </div>
+
+    <div class="reveal">
+      <FAQ />
+    </div>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "SortedPDF",
+      "description": "AI-powered mobile app that auto-fills PDF forms and scans receipts. Set up your profile once, fill every form in seconds.",
+      "url": "https://sortedpdf.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS, Android",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "AUD",
+          "description": "3 form fills per month, receipt detection, single device"
+        },
+        {
+          "@type": "Offer",
+          "name": "Basic",
+          "price": "4.99",
+          "priceCurrency": "AUD",
+          "description": "Unlimited form fills, 50 receipts per month, no watermarks, CSV export, single device"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "19.99",
+          "priceCurrency": "AUD",
+          "description": "Unlimited everything, multi-device, team access, bulk operations, priority support"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does SortedPDF auto-fill forms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SortedPDF uses AI vision to detect form fields in any PDF — even scanned, non-fillable documents. It then intelligently matches your saved profile data to each field and fills them in automatically. You set up your profile once and every form takes seconds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my personal data safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your data is stored entirely on your device using AES-256 encryption. We never store your filled PDF content on our servers. Only the page image is sent to our AI service for field detection, and it is not retained after processing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on scanned PDFs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SortedPDF's AI vision can detect form fields on scanned and photographed documents, not just digital PDFs with embedded form fields. If it looks like a form, SortedPDF can fill it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What countries and formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SortedPDF supports Australia, USA, UK, Canada, New Zealand, and Ireland. All validators accept international address, phone, tax ID, and banking formats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use SortedPDF for business receipts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SortedPDF can scan and extract data from receipts using AI, making expense tracking and reimbursement much faster. The Basic plan includes 50 receipt scans per month, and Pro includes unlimited scans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I cancel my subscription?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can cancel anytime through your App Store or Google Play subscription settings. Cancel at least 24 hours before your renewal date to avoid being charged for the next period. Your access continues until the end of the paid period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a free plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Free plan lets you fill 3 forms per month with no credit card required. When you need more, you can upgrade to Basic ($4.99 AUD/month) or Pro ($19.99 AUD/month) at any time."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

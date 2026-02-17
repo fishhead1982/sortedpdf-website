@@ -1,0 +1,94 @@
+---
+import ScanSearch from '@lucide/astro/icons/scan-search';
+import Zap from '@lucide/astro/icons/zap';
+import Receipt from '@lucide/astro/icons/receipt';
+import WifiOff from '@lucide/astro/icons/wifi-off';
+import Share2 from '@lucide/astro/icons/share-2';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+
+const features = [
+  {
+    icon: ScanSearch,
+    title: 'AI Form Detection',
+    description:
+      'Point your camera at any PDF form. Our AI identifies every field and maps it to your profile automatically — even on scanned or non-fillable PDFs.',
+  },
+  {
+    icon: Zap,
+    title: 'One-Tap Auto-Fill',
+    description:
+      'Set up your profile once with your details. Every form after that fills itself in seconds. No more typing the same address over and over.',
+  },
+  {
+    icon: Receipt,
+    title: 'Receipt Scanner',
+    description:
+      'Snap receipts on the go. AI extracts merchant, date, total, and GST automatically — ready for your expense reports and tax returns.',
+  },
+  {
+    icon: WifiOff,
+    title: 'Works Offline',
+    description:
+      'Fill forms anywhere. No internet required for saved profiles and previously scanned documents. Your productivity never stops.',
+  },
+  {
+    icon: Share2,
+    title: 'Export & Share',
+    description:
+      'Export filled PDFs, share directly via email, or save to your device. Your data stays yours — no lock-in, no surprises.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Bank-Grade Security',
+    description:
+      'All data encrypted on-device using AES-256. Your personal information never leaves your phone unless you choose to share it.',
+  },
+];
+---
+
+<section
+  id="features"
+  class="py-20 lg:py-28 bg-white dark:bg-surface-900"
+  aria-labelledby="features-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950 rounded-full border border-brand-100 dark:border-brand-900">
+        Features
+      </span>
+      <h2
+        id="features-heading"
+        class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+      >
+        Everything you need to stop drowning in paperwork
+      </h2>
+      <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+        SortedPDF handles the tedious work so you can focus on what matters. Powerful AI, simple interface, total privacy.
+      </p>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {features.map((feature, index) => (
+        <article
+          class="reveal group relative bg-white dark:bg-surface-800 border border-gray-100 dark:border-surface-700 rounded-2xl p-6 lg:p-7 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+          style={`transition-delay: ${index * 60}ms`}
+        >
+          <!-- Icon -->
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 mb-5 group-hover:bg-brand-100 dark:group-hover:bg-brand-900 transition-colors duration-200">
+            <feature.icon size={22} aria-hidden="true" />
+          </div>
+
+          <h3 class="font-heading text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            {feature.title}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            {feature.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

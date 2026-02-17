@@ -1,0 +1,98 @@
+---
+// TODO: Replace with real testimonials once collected
+
+const testimonials = [
+  {
+    quote:
+      'I used to spend 20 minutes on each government form. Now it\'s literally 30 seconds.',
+    author: 'Sarah M.',
+    role: 'Small Business Owner',
+    initials: 'SM',
+    colour: 'bg-brand-500',
+  },
+  {
+    quote:
+      'The receipt scanner alone pays for itself at tax time. My accountant loves the exports.',
+    author: 'James K.',
+    role: 'Freelance Contractor',
+    initials: 'JK',
+    colour: 'bg-accent-500',
+  },
+  {
+    quote:
+      'Finally, a PDF app that actually works on mobile without the desktop bloat.',
+    author: 'Emma T.',
+    role: 'Property Manager',
+    initials: 'ET',
+    colour: 'bg-purple-500',
+  },
+];
+---
+
+<section
+  class="py-20 lg:py-28 bg-gray-50 dark:bg-surface-800"
+  aria-labelledby="testimonials-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950 rounded-full border border-brand-100 dark:border-brand-900">
+        Testimonials
+      </span>
+      <h2
+        id="testimonials-heading"
+        class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white"
+      >
+        Real people, real time saved
+      </h2>
+    </div>
+
+    <!-- Testimonial cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {testimonials.map((t, index) => (
+        <figure
+          class="reveal bg-white dark:bg-surface-900 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md border border-gray-100 dark:border-surface-700 transition-all duration-200 hover:-translate-y-1 relative"
+          style={`transition-delay: ${index * 80}ms`}
+        >
+
+          <!-- Quote mark decoration -->
+          <span
+            class="absolute top-5 right-6 font-heading text-6xl font-bold text-gray-100 dark:text-surface-700 leading-none select-none pointer-events-none"
+            aria-hidden="true"
+          >
+            &ldquo;
+          </span>
+
+          <!-- Stars -->
+          <div class="flex items-center gap-1 mb-4" role="img" aria-label="5 out of 5 stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="mb-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+          </blockquote>
+
+          <!-- Author -->
+          <figcaption class="flex items-center gap-3">
+            <!-- Avatar -->
+            <div class={`w-10 h-10 rounded-full ${t.colour} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`} aria-hidden="true">
+              {t.initials}
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 dark:text-white text-sm">{t.author}</p>
+              <p class="text-gray-500 dark:text-gray-400 text-xs">{t.role}</p>
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

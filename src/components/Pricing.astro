@@ -1,0 +1,360 @@
+---
+import Check from '@lucide/astro/icons/check';
+import X from '@lucide/astro/icons/x';
+import Minus from '@lucide/astro/icons/minus';
+
+export interface Props {
+  showToggle?: boolean;
+  showComparisonTable?: boolean;
+}
+
+const { showToggle = true, showComparisonTable = false } = Astro.props;
+
+const plans = [
+  {
+    id: 'free',
+    name: 'Free',
+    monthlyPrice: 0,
+    annualPrice: 0,
+    annualTotal: 0,
+    description: 'Try AI form filling at no cost.',
+    cta: 'Get Started Free',
+    highlighted: false,
+    features: [
+      '3 form fills per month',
+      'Receipt detection only (no OCR)',
+      'Watermarked PDF exports',
+      'Single device',
+      'Basic profile (8 fields)',
+    ],
+  },
+  {
+    id: 'basic',
+    name: 'Basic',
+    monthlyPrice: 4.99,
+    annualPrice: 49,
+    annualTotal: 49,
+    monthlySaving: '17%',
+    badge: 'Most Popular',
+    description: 'Unlimited forms for individuals.',
+    cta: 'Start Basic',
+    highlighted: true,
+    features: [
+      'Unlimited form fills',
+      '50 receipt scans/month with full OCR',
+      'No watermarks',
+      'CSV export',
+      'Full profile (24 fields)',
+      'Single device',
+    ],
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    monthlyPrice: 19.99,
+    annualPrice: 199,
+    annualTotal: 199,
+    monthlySaving: '17%',
+    description: 'For teams and power users.',
+    cta: 'Go Pro',
+    highlighted: false,
+    features: [
+      'Everything in Basic',
+      'Unlimited receipt scans',
+      'Multi-device sync (up to 5)',
+      'Team access (5 seats)',
+      'Bulk operations',
+      'Custom categories',
+      'Accountant sharing',
+      'Priority support',
+    ],
+  },
+];
+
+// Comparison table data
+const comparisonFeatures = [
+  { label: 'Form fills per month', free: '3', basic: 'Unlimited', pro: 'Unlimited' },
+  { label: 'Receipt scanning', free: 'Detection only', basic: '50/month with OCR', pro: 'Unlimited with OCR' },
+  { label: 'PDF watermarks', free: true, basic: false, pro: false },
+  { label: 'CSV export', free: false, basic: true, pro: true },
+  { label: 'Profile fields', free: '8', basic: '24', pro: '24' },
+  { label: 'Devices', free: '1', basic: '1', pro: '5' },
+  { label: 'Team seats', free: false, basic: false, pro: '5' },
+  { label: 'Bulk operations', free: false, basic: false, pro: true },
+  { label: 'Custom categories', free: false, basic: false, pro: true },
+  { label: 'Accountant sharing', free: false, basic: false, pro: true },
+  { label: 'Priority support', free: false, basic: false, pro: true },
+];
+---
+
+<section
+  class="py-20 lg:py-28 bg-white dark:bg-surface-900"
+  aria-labelledby="pricing-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-10 reveal">
+      <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950 rounded-full border border-brand-100 dark:border-brand-900">
+        Pricing
+      </span>
+      <h2
+        id="pricing-heading"
+        class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+      >
+        Simple, transparent pricing
+      </h2>
+      <p class="mx-auto max-w-xl text-lg text-gray-600 dark:text-gray-400">
+        Start free. Upgrade when you're ready. Cancel anytime via the App Store or Google Play.
+      </p>
+    </div>
+
+    <!-- Billing toggle -->
+    {showToggle && (
+      <div class="reveal flex items-center justify-center gap-4 mb-10">
+        <span id="label-monthly" class="text-sm font-medium text-gray-700 dark:text-gray-300">Monthly</span>
+
+        <button
+          id="billing-toggle"
+          type="button"
+          role="switch"
+          aria-checked="true"
+          aria-label="Toggle annual billing"
+          class="relative inline-flex w-12 h-6 rounded-full bg-brand-500 cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+        >
+          <span class="sr-only">Annual billing</span>
+          <span
+            id="toggle-thumb"
+            class="absolute left-1 top-1 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 translate-x-6"
+          ></span>
+        </button>
+
+        <span id="label-annual" class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          Annual
+          <span class="px-2 py-0.5 text-xs font-semibold bg-accent-500 text-white rounded-full">Save 17%</span>
+        </span>
+      </div>
+    )}
+
+    <!-- Pricing cards -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      {plans.map((plan) => (
+        <div class={`
+          relative flex flex-col rounded-2xl p-7 lg:p-8 transition-all duration-200
+          ${plan.highlighted
+            ? 'bg-brand-600 dark:bg-brand-700 text-white shadow-2xl shadow-brand-500/30 ring-2 ring-brand-500 scale-[1.02]'
+            : 'bg-white dark:bg-surface-800 border border-gray-200 dark:border-surface-700 shadow-sm hover:shadow-md'
+          }
+        `}>
+
+          <!-- Badge -->
+          {plan.badge && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center px-4 py-1 rounded-full text-xs font-bold bg-accent-500 text-white shadow-md uppercase tracking-wide">
+                {plan.badge}
+              </span>
+            </div>
+          )}
+
+          <!-- Plan header -->
+          <div class="mb-6">
+            <h3 class={`font-heading text-xl font-bold mb-1 ${plan.highlighted ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+              {plan.name}
+            </h3>
+            <p class={`text-sm ${plan.highlighted ? 'text-brand-100' : 'text-gray-500 dark:text-gray-400'}`}>
+              {plan.description}
+            </p>
+          </div>
+
+          <!-- Price -->
+          <div class="mb-6">
+            {/* Annual price (default shown) */}
+            <div id={`price-annual-${plan.id}`} class="flex items-baseline gap-1">
+              {plan.annualPrice === 0 ? (
+                <span class={`font-heading text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                  Free
+                </span>
+              ) : (
+                <>
+                  <span class={`font-heading text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                    ${plan.annualPrice}
+                  </span>
+                  <span class={`text-sm ${plan.highlighted ? 'text-brand-100' : 'text-gray-500 dark:text-gray-400'}`}>
+                    /year
+                  </span>
+                </>
+              )}
+            </div>
+
+            {/* Monthly price (hidden by default) */}
+            <div id={`price-monthly-${plan.id}`} class="hidden flex items-baseline gap-1">
+              {plan.monthlyPrice === 0 ? (
+                <span class={`font-heading text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                  Free
+                </span>
+              ) : (
+                <>
+                  <span class={`font-heading text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                    ${plan.monthlyPrice}
+                  </span>
+                  <span class={`text-sm ${plan.highlighted ? 'text-brand-100' : 'text-gray-500 dark:text-gray-400'}`}>
+                    /month
+                  </span>
+                </>
+              )}
+            </div>
+
+            {plan.monthlySaving && (
+              <p class={`mt-1 text-xs ${plan.highlighted ? 'text-brand-100' : 'text-gray-500 dark:text-gray-400'}`} id={`saving-note-${plan.id}`}>
+                Billed annually · save {plan.monthlySaving}
+              </p>
+            )}
+          </div>
+
+          <!-- CTA -->
+          <a
+            href="#ios-download"
+            class={`
+              block w-full text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 mb-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+              ${plan.highlighted
+                ? 'bg-white text-brand-700 hover:bg-brand-50 focus-visible:ring-white'
+                : 'bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-brand-500'
+              }
+            `}
+          >
+            {plan.cta}
+          </a>
+
+          <!-- Divider -->
+          <div class={`border-t mb-6 ${plan.highlighted ? 'border-brand-500' : 'border-gray-100 dark:border-surface-700'}`}></div>
+
+          <!-- Features list -->
+          <ul class="space-y-3 flex-1">
+            {plan.features.map((feat) => (
+              <li class="flex items-start gap-2.5">
+                <span class={`mt-0.5 flex-shrink-0 ${plan.highlighted ? 'text-brand-200' : 'text-brand-500'}`}>
+                  <Check size={16} aria-hidden="true" />
+                </span>
+                <span class={`text-sm ${plan.highlighted ? 'text-brand-50' : 'text-gray-700 dark:text-gray-300'}`}>
+                  {feat}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Currency note -->
+    <p class="reveal mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+      Prices shown in AUD. Equivalent pricing in local currency on the App Store and Google Play.
+    </p>
+
+    <!-- Comparison table -->
+    {showComparisonTable && (
+      <div class="reveal mt-16 overflow-x-auto">
+        <h3 class="font-heading text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+          Full Feature Comparison
+        </h3>
+
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-surface-700">
+              <th class="text-left py-3 px-4 text-gray-600 dark:text-gray-400 font-medium w-1/2">Feature</th>
+              <th class="text-center py-3 px-4 text-gray-900 dark:text-white font-semibold">Free</th>
+              <th class="text-center py-3 px-4 text-brand-600 dark:text-brand-400 font-semibold">Basic</th>
+              <th class="text-center py-3 px-4 text-gray-900 dark:text-white font-semibold">Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map((row, i) => (
+              <tr class={`border-b border-gray-100 dark:border-surface-800 ${i % 2 === 0 ? '' : 'bg-gray-50 dark:bg-surface-800/50'}`}>
+                <td class="py-3 px-4 text-gray-700 dark:text-gray-300 font-medium">{row.label}</td>
+                <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
+                  {typeof row.free === 'boolean'
+                    ? (row.free
+                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
+                      )
+                    : row.free
+                  }
+                </td>
+                <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
+                  {typeof row.basic === 'boolean'
+                    ? (row.basic
+                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
+                      )
+                    : row.basic
+                  }
+                </td>
+                <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
+                  {typeof row.pro === 'boolean'
+                    ? (row.pro
+                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
+                      )
+                    : row.pro
+                  }
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </div>
+</section>
+
+{showToggle && (
+  <script is:inline>
+    (function () {
+      var toggle = document.getElementById('billing-toggle');
+      var thumb = document.getElementById('toggle-thumb');
+      if (!toggle) return;
+
+      // true = annual (default)
+      var isAnnual = true;
+
+      var planIds = ['free', 'basic', 'pro'];
+
+      function updatePrices() {
+        planIds.forEach(function (id) {
+          var annualEl = document.getElementById('price-annual-' + id);
+          var monthlyEl = document.getElementById('price-monthly-' + id);
+          var savingEl = document.getElementById('saving-note-' + id);
+
+          if (isAnnual) {
+            annualEl && annualEl.classList.remove('hidden');
+            monthlyEl && monthlyEl.classList.add('hidden');
+            savingEl && savingEl.classList.remove('hidden');
+          } else {
+            annualEl && annualEl.classList.add('hidden');
+            monthlyEl && monthlyEl.classList.remove('hidden');
+            savingEl && savingEl.classList.add('hidden');
+          }
+        });
+
+        toggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
+
+        if (isAnnual) {
+          thumb.style.transform = 'translateX(1.5rem)';
+          toggle.classList.add('bg-brand-500');
+          toggle.classList.remove('bg-gray-300');
+        } else {
+          thumb.style.transform = 'translateX(0)';
+          toggle.classList.remove('bg-brand-500');
+          toggle.classList.add('bg-gray-300');
+        }
+      }
+
+      toggle.addEventListener('click', function () {
+        isAnnual = !isAnnual;
+        updatePrices();
+      });
+
+      // Initialise
+      updatePrices();
+    })();
+  </script>
+)}

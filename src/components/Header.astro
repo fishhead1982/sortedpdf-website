@@ -1,0 +1,153 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import Menu from '@lucide/astro/icons/menu';
+import X from '@lucide/astro/icons/x';
+
+const navLinks = [
+  { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+];
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-40 w-full border-b border-gray-200 dark:border-surface-700 bg-white/90 dark:bg-surface-800/90 backdrop-blur-md transition-shadow duration-200"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a
+        href="/"
+        class="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-md"
+        aria-label="SortedPDF — home"
+      >
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-500 text-white font-bold text-sm select-none" aria-hidden="true">
+          S
+        </span>
+        <span class="font-heading font-700 text-xl text-gray-900 dark:text-gray-100">
+          Sorted<span class="text-brand-500">PDF</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-surface-700 rounded-md transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Right side: theme toggle + CTA + mobile hamburger -->
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
+
+        <a
+          href="#ios-download"
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold transition-colors duration-150 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+        >
+          Download Free
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Open mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-surface-700 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+        >
+          <span class="block" id="hamburger-icon" aria-hidden="true"><Menu size={20} /></span>
+          <span class="hidden" id="close-icon" aria-hidden="true"><X size={20} /></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile slide-in menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out border-t border-gray-100 dark:border-surface-700"
+    aria-hidden="true"
+  >
+    <nav class="px-4 pt-2 pb-4 space-y-1" aria-label="Mobile navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block px-3 py-2.5 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-50 dark:hover:bg-surface-700 rounded-lg transition-colors duration-150"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-2 border-t border-gray-100 dark:border-surface-700">
+        <a
+          href="#ios-download"
+          class="block w-full text-center px-4 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-colors duration-150"
+        >
+          Download Free
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var hamburger = document.getElementById('hamburger-icon');
+    var closeIcon = document.getElementById('close-icon');
+    if (!btn || !menu) return;
+
+    function openMenu() {
+      menu.style.maxHeight = menu.scrollHeight + 'px';
+      menu.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+      hamburger.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }
+
+    function closeMenu() {
+      menu.style.maxHeight = '0';
+      menu.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      hamburger.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    }
+
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    // Close on link click
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        btn.focus();
+      }
+    });
+
+    // Add shadow on scroll
+    var header = document.getElementById('site-header');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 8) {
+        header.classList.add('shadow-sm');
+      } else {
+        header.classList.remove('shadow-sm');
+      }
+    }, { passive: true });
+  })();
+</script>

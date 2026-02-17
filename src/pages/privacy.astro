@@ -1,0 +1,185 @@
+---
+// <!-- TODO: Have reviewed by a legal professional before launch -->
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!-- TODO: Have reviewed by a legal professional before launch -->
+
+<BaseLayout
+  title="Privacy Policy — SortedPDF"
+  description="SortedPDF privacy policy. Learn how we protect your data."
+>
+  <Header />
+
+  <main id="main" class="bg-white dark:bg-gray-950">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <article class="prose prose-gray dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-a:text-indigo-600 dark:prose-a:text-indigo-400 max-w-none">
+
+        <h1>Privacy Policy</h1>
+
+        <p class="text-sm text-gray-500 dark:text-gray-400 not-prose mb-8">
+          Last updated: [DATE] &nbsp;&bull;&nbsp; SortedPDF (ABN: [ABN])
+        </p>
+
+        <p>
+          SortedPDF ("we", "our", or "us") is committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and what rights you have in relation to it.
+        </p>
+
+        <p>
+          This policy applies to all information collected through our mobile application (iOS and Android) and any related services. If you have any questions or concerns, please contact us at <a href="mailto:privacy@sortedpdf.com">privacy@sortedpdf.com</a>.
+        </p>
+
+        <p>
+          This policy is compliant with the <strong>Australian Privacy Act 1988</strong> (Cth) and the Australian Privacy Principles (APPs), the <strong>General Data Protection Regulation (GDPR)</strong> where applicable, and the <strong>California Consumer Privacy Act (CCPA)</strong> where applicable.
+        </p>
+
+        <hr />
+
+        <h2>1. Information We Collect</h2>
+
+        <p>
+          All personal information is stored <strong>on your device only</strong>, encrypted using AES-256 encryption. We do not operate a user account system and do not store personal profile data on our servers.
+        </p>
+
+        <p>The information you choose to save within the app may include:</p>
+
+        <ul>
+          <li>
+            <strong>Profile data</strong> — up to 24 fields across categories such as: full name, date of birth, gender, nationality, email address, phone numbers, home and mailing addresses, employer name and address, job title, tax ID, health insurance ID, emergency contact details, bank account details (BSB/routing number, account number), and passport or driver's licence details.
+          </li>
+          <li>
+            <strong>PDF documents</strong> — images of PDF pages you import into the app for form filling, stored locally on your device.
+          </li>
+          <li>
+            <strong>Receipt data</strong> — images and extracted data from receipts you scan within the app, stored locally on your device.
+          </li>
+          <li>
+            <strong>App preferences</strong> — settings such as theme preference, onboarding completion status, and your chosen subscription tier.
+          </li>
+        </ul>
+
+        <p>
+          We do <strong>not</strong> collect your name, email address, or any identifying information to create an account. The app functions entirely without registration.
+        </p>
+
+        <h2>2. How We Use Your Information</h2>
+
+        <p>We use the information stored on your device solely to:</p>
+
+        <ul>
+          <li>Provide the core form-filling functionality — matching your saved profile fields to detected form fields in imported PDFs.</li>
+          <li>Provide the receipt scanning functionality — extracting structured data from receipt images using AI.</li>
+          <li>Improve the accuracy of our AI field detection models using anonymised, aggregated, non-personal telemetry (see Section 3).</li>
+          <li>Remember your preferences so you have a consistent experience across sessions.</li>
+        </ul>
+
+        <p>We do not use your information for marketing, advertising targeting, or any purpose not listed above.</p>
+
+        <h2>3. Data Sent to Third Parties</h2>
+
+        <p>
+          In limited circumstances, data is transmitted outside your device. We take care to minimise what is shared and with whom.
+        </p>
+
+        <h3>Google Gemini API (AI field detection)</h3>
+        <p>
+          When you request AI field detection on a PDF page, a rasterised image of that page is sent via our secure backend proxy to the Google Gemini API. This image is used solely to identify form field locations and types. <strong>The image is not stored by us after processing, and we have no data-sharing agreement with Google that permits them to use your images for model training.</strong> Google's use of this data is governed by the <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">Google Cloud Data Processing Addendum</a>.
+        </p>
+
+        <h3>Firebase Analytics</h3>
+        <p>
+          We use Firebase Analytics to understand how the app is used in aggregate. Only <strong>anonymised usage events</strong> are collected — for example, "form fill completed" or "receipt scanned". No personally identifiable information (PII), no profile field values, and no document content is sent to Firebase.
+        </p>
+
+        <h3>Apple App Store / Google Play</h3>
+        <p>
+          Subscription purchases are processed directly by Apple (via the App Store) or Google (via Google Play). We receive confirmation of your subscription tier but do not receive your payment card details. Their respective privacy policies govern how they handle purchase data.
+        </p>
+
+        <h2>4. Data We Do NOT Collect</h2>
+
+        <p>We want to be explicit about what we do not do:</p>
+
+        <ul>
+          <li>We do <strong>not</strong> have access to the content of your filled PDF forms on our servers.</li>
+          <li>We do <strong>not</strong> sell, rent, or share your personal data with advertisers or data brokers.</li>
+          <li>We do <strong>not</strong> use your profile data, document images, or receipt data to train AI models.</li>
+          <li>We do <strong>not</strong> build advertising profiles or share data with social media platforms.</li>
+          <li>We do <strong>not</strong> require account creation or collect your email address for app functionality.</li>
+        </ul>
+
+        <h2>5. Data Security</h2>
+
+        <p>We take the security of your data seriously and apply multiple layers of protection:</p>
+
+        <ul>
+          <li><strong>On-device encryption</strong> — all profile, PDF, and receipt data is stored in Hive encrypted boxes using AES-256 encryption. The encryption key is stored in your device's secure keychain (iOS Keychain / Android Keystore) via flutter_secure_storage.</li>
+          <li><strong>Backend authentication</strong> — all requests from the app to our backend proxy are authenticated using HMAC-SHA256 signed tokens to prevent unauthorised access.</li>
+          <li><strong>Server-side API keys</strong> — third-party API keys (e.g., Google Gemini) are held server-side only and are never shipped inside the app binary.</li>
+          <li><strong>Rate limiting</strong> — our backend applies rate limiting to prevent abuse.</li>
+          <li><strong>No data at rest on servers</strong> — we do not persist your personal profile data or document content on any server.</li>
+        </ul>
+
+        <p>
+          No method of electronic transmission or storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee its absolute security.
+        </p>
+
+        <h2>6. Your Rights</h2>
+
+        <p>You have full control over your data:</p>
+
+        <ul>
+          <li>
+            <strong>Delete all data</strong> — you can permanently delete all profile data, saved PDFs, and receipt data at any time via <strong>Settings &gt; Clear Data</strong> within the app. This action is irreversible.
+          </li>
+          <li>
+            <strong>Export before deletion</strong> — before clearing your data, you can export your profile information and receipt data via the app's export feature.
+          </li>
+          <li>
+            <strong>Right of access</strong> — since all data is stored on your device, you have direct access to it at all times through the app.
+          </li>
+          <li>
+            <strong>Right to contact us</strong> — for any privacy-related concerns or requests (including GDPR/CCPA rights such as data portability or correction), contact us at <a href="mailto:privacy@sortedpdf.com">privacy@sortedpdf.com</a>. We will respond within 30 days.
+          </li>
+        </ul>
+
+        <h2>7. Children's Privacy</h2>
+
+        <p>
+          SortedPDF is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with information, please contact us at <a href="mailto:privacy@sortedpdf.com">privacy@sortedpdf.com</a> and we will take steps to remove that information.
+        </p>
+
+        <h2>8. Changes to This Policy</h2>
+
+        <p>
+          We may update this Privacy Policy from time to time. When we make material changes, we will notify you via an in-app notification before the changes take effect. The "Last updated" date at the top of this page will also be revised. We encourage you to review this policy periodically.
+        </p>
+
+        <p>
+          Your continued use of SortedPDF after any changes constitutes your acceptance of the updated policy.
+        </p>
+
+        <h2>9. Contact Us</h2>
+
+        <p>
+          If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our Privacy Officer:
+        </p>
+
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:privacy@sortedpdf.com">privacy@sortedpdf.com</a></li>
+          <li><strong>Company:</strong> SortedPDF (ABN: [ABN])</li>
+          <li><strong>Jurisdiction:</strong> New South Wales, Australia</li>
+        </ul>
+
+        <p>
+          For complaints relating to the handling of your personal information under the Australian Privacy Act 1988, you may also contact the <a href="https://www.oaic.gov.au/" target="_blank" rel="noopener noreferrer">Office of the Australian Information Commissioner (OAIC)</a>.
+        </p>
+
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Pricing from '../components/Pricing.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<BaseLayout
+  title="Pricing — SortedPDF"
+  description="Choose the right SortedPDF plan. Free to start, upgrade anytime. AI-powered PDF form filling from $4.99 AUD/month."
+>
+  <Header />
+
+  <main id="main">
+    <!-- Page hero -->
+    <section class="bg-white dark:bg-gray-950 pt-20 pb-12 px-4 text-center">
+      <div class="max-w-2xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
+          Simple, Transparent Pricing
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Start free. Upgrade when you need more.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pricing component with toggle and comparison table -->
+    <Pricing showToggle={true} showComparisonTable={true} />
+
+    <!-- Competitor comparison section -->
+    <section class="bg-gray-50 dark:bg-gray-900 py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
+          How we compare
+        </h2>
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-10">
+          More features, less cost — built mobile-first from the ground up.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th class="text-left px-6 py-4 text-gray-700 dark:text-gray-300 font-semibold bg-gray-50 dark:bg-gray-900 w-1/4">
+                  Feature
+                </th>
+                <!-- SortedPDF column highlighted -->
+                <th class="px-6 py-4 font-semibold bg-indigo-600 dark:bg-indigo-700 text-white text-center w-1/4">
+                  <span class="block text-xs font-normal text-indigo-200 mb-0.5">You're here</span>
+                  SortedPDF Basic
+                </th>
+                <th class="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-900 text-center w-1/4">
+                  PDFfiller
+                </th>
+                <th class="px-6 py-4 font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-900 text-center w-1/4">
+                  Adobe Fill &amp; Sign
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr class="bg-white dark:bg-gray-950">
+                <td class="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">Monthly price</td>
+                <td class="px-6 py-4 text-center bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold">
+                  $4.99 AUD
+                </td>
+                <td class="px-6 py-4 text-center text-gray-600 dark:text-gray-400">$20+ AUD</td>
+                <td class="px-6 py-4 text-center text-gray-600 dark:text-gray-400">$22+ AUD</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-950">
+                <td class="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">AI auto-fill</td>
+                <td class="px-6 py-4 text-center bg-indigo-50 dark:bg-indigo-950">
+                  <span class="text-green-600 dark:text-green-400 text-lg font-bold" aria-label="Yes">✓</span>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  <span class="text-red-400 dark:text-red-500 text-lg font-bold" aria-label="No">✗</span>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  <span class="text-red-400 dark:text-red-500 text-lg font-bold" aria-label="No">✗</span>
+                </td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-950">
+                <td class="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">Receipt scanning</td>
+                <td class="px-6 py-4 text-center bg-indigo-50 dark:bg-indigo-950">
+                  <span class="text-green-600 dark:text-green-400 text-lg font-bold" aria-label="Yes">✓</span>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  <span class="text-red-400 dark:text-red-500 text-lg font-bold" aria-label="No">✗</span>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  <span class="text-red-400 dark:text-red-500 text-lg font-bold" aria-label="No">✗</span>
+                </td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-950">
+                <td class="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">Mobile-first</td>
+                <td class="px-6 py-4 text-center bg-indigo-50 dark:bg-indigo-950">
+                  <span class="text-green-600 dark:text-green-400 text-lg font-bold" aria-label="Yes">✓</span>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  <span class="text-red-400 dark:text-red-500 text-lg font-bold" aria-label="No">✗</span>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-500 dark:text-gray-400 text-sm">Partial</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-xs text-center text-gray-400 dark:text-gray-600 mt-4">
+          Competitor pricing based on publicly listed plans as of early 2026. Prices shown in AUD. Verify current pricing on respective websites.
+        </p>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>
