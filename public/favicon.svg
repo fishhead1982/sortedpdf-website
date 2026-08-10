@@ -1,8 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#17b183"/>
-  <path d="M8 8h10l4 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="white" opacity="0.9"/>
-  <path d="M18 8v4h4" fill="none" stroke="white" stroke-width="1.5" opacity="0.9"/>
-  <path d="M9 17h8M9 20h6" stroke="#17b183" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="23" cy="22" r="6" fill="#f97316"/>
-  <path d="M21 22l1.5 1.5L25.5 20" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="fg1" x1="27.8" y1="68.76" x2="63.17" y2="33.39" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset=".4" stop-color="#2563eb"/>
+      <stop offset=".74" stop-color="#733eed"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="fg2" x1="27.8" y1="55.85" x2="63.17" y2="20.48" xlink:href="#fg1"/>
+    <linearGradient id="fg3" x1="27.16" y1="43.05" x2="68.42" y2="1.78" xlink:href="#fg1"/>
+  </defs>
+  <polygon fill="url(#fg1)" points="44.92 63.55 15.89 48 10.12 51.07 44.96 69.73 80.86 51.07 74.88 47.98 44.92 63.55"/>
+  <polygon fill="url(#fg2)" points="44.92 50.64 15.89 35.09 10.12 38.16 44.96 56.82 80.86 38.16 74.88 35.07 44.92 50.64"/>
+  <polygon fill="#171a1c" points="76.41 58.29 72.95 60.09 77.4 62.39 44.97 79.25 13.49 62.4 17.81 60.1 14.43 58.29 6.74 62.39 44.95 82.85 84.31 62.39 76.41 58.29"/>
+  <polygon fill="url(#fg3)" points="10.12 24.72 44.96 43.38 80.86 24.72 45 6.15 10.12 24.72"/>
+  <path fill="#fff" d="M40.71,33.3c-.52,0-1.04-.18-1.45-.55l-5.83-5.2c-.9-.8-.98-2.19-.18-3.09.8-.9,2.19-.98,3.09-.18l4.29,3.82,11.21-11.21c.85-.85,2.24-.85,3.09,0s.85,2.24,0,3.09l-12.67,12.67c-.43.43-.99.64-1.55.64Z"/>
 </svg>

@@ -1,28 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #edfcf6;
-  --color-brand-100: #d3f8e8;
-  --color-brand-200: #aaf0d5;
-  --color-brand-300: #73e2bc;
-  --color-brand-400: #3acc9e;
-  --color-brand-500: #17b183;
-  --color-brand-600: #0b8f6b;
-  --color-brand-700: #097258;
-  --color-brand-800: #0a5a47;
-  --color-brand-900: #094a3b;
-  --color-brand-950: #042922;
+  /* Brand blue — #2563EB sits at 600, #1D4ED8 (pressed/hover) at 700 */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
 
-  --color-accent-400: #fb923c;
-  --color-accent-500: #f97316;
-  --color-accent-600: #ea580c;
+  /* AI / smart-features accent purple — #7C3AED sits at 500, matching every
+     existing accent-500 usage (badges, avatars, decorative accents) */
+  --color-accent-50: #f5f3ff;
+  --color-accent-100: #ede9fe;
+  --color-accent-200: #ddd6fe;
+  --color-accent-300: #c4b5fd;
+  --color-accent-400: #a78bfa;
+  --color-accent-500: #7c3aed;
+  --color-accent-600: #6d28d9;
+  --color-accent-700: #5b21b6;
+  --color-accent-800: #4c1d95;
+  --color-accent-900: #2e1065;
+  --color-accent-950: #1e1147;
+
+  /* Success — for "included" ticks and success states only, never the brand colour */
+  --color-success: #10b981;
 
   --color-surface-900: #0f172a;
   --color-surface-800: #1e293b;
   --color-surface-700: #334155;
 
-  --font-heading: 'Sora', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, sans-serif;
 }
 
 html {
@@ -49,8 +63,13 @@ h1, h2, h3, h4, h5, h6 {
 .dark { color-scheme: dark; }
 
 :focus-visible {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-brand-600);
   outline-offset: 2px;
+}
+
+/* Official AI / CTA gradient: -135deg, blue (#2563EB) to purple (#7C3AED) */
+.gradient-cta {
+  background-image: linear-gradient(-135deg, var(--color-brand-600), var(--color-accent-500));
 }
 
 .reveal {

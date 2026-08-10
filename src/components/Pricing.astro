@@ -22,7 +22,7 @@ const plans = [
     highlighted: false,
     features: [
       '3 form fills per month',
-      'Receipt detection only (no OCR)',
+      'No receipt scanning',
       'Watermarked PDF exports',
       'Single device',
       'Basic profile (8 fields)',
@@ -74,7 +74,7 @@ const plans = [
 // Comparison table data
 const comparisonFeatures = [
   { label: 'Form fills per month', free: '3', basic: 'Unlimited', pro: 'Unlimited' },
-  { label: 'Receipt scanning', free: 'Detection only', basic: '50/month with OCR', pro: 'Unlimited with OCR' },
+  { label: 'Receipt scanning', free: 'Not included', basic: '50/month with OCR', pro: 'Unlimited with OCR' },
   { label: 'PDF watermarks', free: true, basic: false, pro: false },
   { label: 'CSV export', free: false, basic: true, pro: true },
   { label: 'Profile fields', free: '8', basic: '24', pro: '24' },
@@ -142,7 +142,7 @@ const comparisonFeatures = [
         <div class={`
           relative flex flex-col rounded-2xl p-7 lg:p-8 transition-all duration-200
           ${plan.highlighted
-            ? 'bg-brand-600 dark:bg-brand-700 text-white shadow-2xl shadow-brand-500/30 ring-2 ring-brand-500 scale-[1.02]'
+            ? 'gradient-cta text-white shadow-2xl shadow-brand-500/30 ring-2 ring-brand-500 scale-[1.02]'
             : 'bg-white dark:bg-surface-800 border border-gray-200 dark:border-surface-700 shadow-sm hover:shadow-md'
           }
         `}>
@@ -218,7 +218,7 @@ const comparisonFeatures = [
               block w-full text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 mb-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
               ${plan.highlighted
                 ? 'bg-white text-brand-700 hover:bg-brand-50 focus-visible:ring-white'
-                : 'bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-brand-500'
+                : 'gradient-cta text-white hover:brightness-110 focus-visible:ring-brand-600'
               }
             `}
           >
@@ -232,7 +232,7 @@ const comparisonFeatures = [
           <ul class="space-y-3 flex-1">
             {plan.features.map((feat) => (
               <li class="flex items-start gap-2.5">
-                <span class={`mt-0.5 flex-shrink-0 ${plan.highlighted ? 'text-brand-200' : 'text-brand-500'}`}>
+                <span class={`mt-0.5 flex-shrink-0 ${plan.highlighted ? 'text-white' : 'text-success'}`}>
                   <Check size={16} aria-hidden="true" />
                 </span>
                 <span class={`text-sm ${plan.highlighted ? 'text-brand-50' : 'text-gray-700 dark:text-gray-300'}`}>
@@ -273,7 +273,7 @@ const comparisonFeatures = [
                 <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
                   {typeof row.free === 'boolean'
                     ? (row.free
-                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        ? <span class="text-success"><Check size={16} aria-label="Included" class="mx-auto" /></span>
                         : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
                       )
                     : row.free
@@ -282,7 +282,7 @@ const comparisonFeatures = [
                 <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
                   {typeof row.basic === 'boolean'
                     ? (row.basic
-                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        ? <span class="text-success"><Check size={16} aria-label="Included" class="mx-auto" /></span>
                         : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
                       )
                     : row.basic
@@ -291,7 +291,7 @@ const comparisonFeatures = [
                 <td class="py-3 px-4 text-center text-gray-600 dark:text-gray-400">
                   {typeof row.pro === 'boolean'
                     ? (row.pro
-                        ? <span class="text-brand-500"><Check size={16} aria-label="Included" class="mx-auto" /></span>
+                        ? <span class="text-success"><Check size={16} aria-label="Included" class="mx-auto" /></span>
                         : <span class="text-gray-400 dark:text-gray-600"><X size={16} aria-label="Not included" class="mx-auto" /></span>
                       )
                     : row.pro
